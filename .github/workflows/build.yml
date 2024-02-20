@@ -1,7 +1,5 @@
 name: build
-on:
-  watch:
-    types: started
+on: push
 jobs:
   prepare_release:
     runs-on: ubuntu-20.04
