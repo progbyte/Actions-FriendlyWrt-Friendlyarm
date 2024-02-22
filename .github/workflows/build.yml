@@ -23,6 +23,7 @@ jobs:
         tag_name: ${{ steps.release_tag.outputs.release_tag }}
         draft: false
         prerelease: false
+
     outputs:
       release_tag: ${{ steps.release_tag.outputs.release_tag }}
       upload_url: ${{ steps.release.outputs.upload_url }}
@@ -272,3 +273,11 @@ jobs:
         tag: ${{ needs.prepare_release.outputs.release_tag }}
         overwrite: true
 
+    - name: Set Keep Alive
+      id: keepalive
+      run: |
+           touch /tmp/keepalive
+
+    - name: Setup Debug Session
+      id: setup
+      uses: csexton/debugger-action@master
