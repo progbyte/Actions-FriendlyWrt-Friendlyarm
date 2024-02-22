@@ -127,6 +127,10 @@ jobs:
         tar cvzf ../artifact/${rootfs_filename} ${FRIENDLYWRT_SRC}/${FRIENDLYWRT_ROOTFS} \
               ${FRIENDLYWRT_SRC}/${FRIENDLYWRT_PACKAGE_DIR}
         echo "##[set-output name=rootfs_filename;]$rootfs_filename"
+        echo "##rootfs_filename = $rootfs_filename"
+        echo "##FRIENDLYWRT_SRC = $FRIENDLYWRT_SRC"
+        echo "##FRIENDLYWRT_ROOTFS = $FRIENDLYWRT_ROOTFS"
+        echo "##FRIENDLYWRT_PACKAGE_DIR = $FRIENDLYWRT_PACKAGE_DIR"
 
     - name: Upload rootfs package
       uses: svenstaro/upload-release-action@v2
@@ -273,11 +277,11 @@ jobs:
         tag: ${{ needs.prepare_release.outputs.release_tag }}
         overwrite: true
 
-    - name: Set Keep Alive
-      id: keepalive
-      run: |
-           touch /tmp/keepalive
+    # - name: Set Keep Alive
+    #   id: keepalive
+    #   run: |
+    #        touch /tmp/keepalive
 
-    - name: Setup Debug Session
-      id: setup
-      uses: csexton/debugger-action@master
+    # - name: Setup Debug Session
+    #   id: setup
+    #   uses: csexton/debugger-action@master
